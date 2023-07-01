@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <title>Payment Form</title>
+  <style>
+    /* Custom styles */
+    .container {
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .payment-image {
+      width: 200px;
+      height: auto;
+      margin-bottom: 20px;
+    }
+
+    body {
+      background-color: #f8f9fa;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="card p-5">
+      <img src="../../images/payments.jpg" alt="Payment Image" class="payment-image mx-auto d-block">
+      <form method="POST" action="{% url 'payment_add' %}">
+        {% csrf_token %}
+        <div class="form-group">
+          <label for="id_order" class="text-info">Order:</label>
+          {{ form.order }}
+        </div>
+        <div class="form-group">
+          <label for="id_payment_date" class="text-info">Payment Date:</label>
+          {{ form.payment_date }}
+        </div>
+        <div class="form-group">
+          <label for="id_payment_method" class="text-info">Payment Method:</label>
+          {{ form.payment_method }}
+        </div>
+        <button type="submit" class="btn btn-primary btn-block">Submit</button>
+      </form>
+    </div>
+  </div>
+</body>
+</html>
